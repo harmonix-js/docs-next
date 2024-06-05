@@ -10,6 +10,7 @@
               <h1 class="text-3xl font-bold mb-5">{{ doc.title }}</h1>
               <ContentRenderer :value="doc" />
             </article>
+            <Footer class="max-w-2xl xl:max-w-3xl mx-auto" />
           </ContentDoc>
         </div>
       </div>

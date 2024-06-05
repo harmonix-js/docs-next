@@ -34,25 +34,13 @@ const getIcon = (input: string) => {
   return match ? match[1] : null
 }
 
-// const getEnv = (input: string) => {
-// 	const match = input.match(/env=(.+)/)
-
-// 	if (match) {
-// 		const envs = match[1].split(',')
-
-// 		return envs.map((env) => env.trim())
-// 	}
-// 	return null
-// }
-
 const icon = computed(() => getIcon(props.meta))
-// const envs = computed(() => getEnv(props.meta))
 </script>
 
 <template>
-  <div v-if="filename">
+  <div v-if="filename" class="my-4">
     <div
-      class="flex items-center bg-gray-100 border-b border-b-gray-200 my-4 rounded-t-lg p-4"
+      class="flex items-center bg-gray-100 border-b border-b-gray-200 rounded-t-lg p-4"
     >
       <Icon
         v-if="icon"
@@ -66,10 +54,12 @@ const icon = computed(() => getIcon(props.meta))
       :class="$props.class"
     >
 			<slot />
-			<button v-if="isSupported" @click="copy(code)" class="absolute top-3 right-3 flex items-center justify-center w-6 h-6">
-				<Icon v-if="copied" name="lucide:check" class="w-4 h-4 text-green-800" />
-				<Icon v-else name="lucide:copy" class="group-hover/pre:opacity-100 w-4 h-4 text-gray-500 hover:text-gray-800 opacity-0 transition-all" />
-			</button>
+			<ClientOnly>
+				<button v-if="isSupported" @click="copy(code)" class="absolute top-3 right-3 flex items-center justify-center w-6 h-6">
+					<Icon v-if="copied" name="lucide:check" class="w-4 h-4 text-green-800" />
+					<Icon v-else name="lucide:copy" class="group-hover/pre:opacity-100 w-4 h-4 text-gray-500 hover:text-gray-900 opacity-0 transition-all" />
+				</button>
+			</ClientOnly>
 		</pre>
   </div>
   <pre
@@ -78,10 +68,12 @@ const icon = computed(() => getIcon(props.meta))
     :class="$props.class"
   >
 		<slot />
-		<button v-if="isSupported" @click="copy(code)" class="absolute top-3 right-3 flex items-center justify-center w-6 h-6">
-			<Icon v-if="copied" name="lucide:check" class="w-4 h-4 text-green-800" />
-			<Icon v-else name="lucide:copy" class="group-hover/pre:opacity-100 w-4 h-4 text-gray-500 hover:text-gray-800 opacity-0 transition-all" />
-		</button>
+		<ClientOnly>
+			<button v-if="isSupported" @click="copy(code)" class="absolute top-3 right-3 flex items-center justify-center w-6 h-6">
+				<Icon v-if="copied" name="lucide:check" class="w-4 h-4 text-green-800" />
+				<Icon v-else name="lucide:copy" class="group-hover/pre:opacity-100 w-4 h-4 text-gray-500 hover:text-gray-900 opacity-0 transition-all" />
+			</button>
+		</ClientOnly>
 	</pre>
 </template>
 
