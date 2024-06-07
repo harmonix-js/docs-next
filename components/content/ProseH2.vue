@@ -5,16 +5,16 @@ const props = defineProps<{ id?: string }>()
 <template>
   <h2
     :id="id"
-    class="group/h2 relative flex mt-6 mb-3 pt-4 border-t border-t-gray-200 items-center text-2xl font-semibold"
+    class="group/h2 relative flex border-t border-t-neutral-200 pt-10 scroll-mt-3 text-2xl font-semibold mt-12 mb-6 leading-normal"
   >
     <NuxtLink
       :to="`#${id}`"
-      class="group-hover/h2:opacity-100 absolute bg-white rounded-md -left-8 opacity-0 transition-opacity"
+      class="group-hover/h2:opacity-100 absolute bg-white rounded-md -left-8 bottom-1.5 opacity-0 transition-opacity"
     >
       <span
-        class="flex w-6 h-6 items-center justify-center border border-gray-200 rounded-md"
+        class="flex w-6 h-6 items-center justify-center border border-gray-200 rounded"
       >
-        <Icon name="lucide:hash" class="w-4 h-4 text-gray-500" />
+        <Icon name="ph:hash" class="w-4 h-4 text-neutral-500" />
       </span>
     </NuxtLink>
     <span>

@@ -3,21 +3,31 @@ const { toc } = useContent()
 </script>
 
 <template>
-  <div class="relative w-64 py-8">
-    <div v-if="toc && toc.links && toc.links.length > 0" class="fixed w-64">
-      <h3 class="px-6 mb-2.5 font-medium">On this page</h3>
-      <nav class="px-6 py-1 border-l border-l-gray-200">
-        <ul class="space-y-1.5">
-          <li v-for="link in toc.links" :key="link.text">
+  <nav class="order-last hidden w-56 shrink-0 lg:block">
+    <div
+      v-if="toc && toc.links"
+      class="sticky top-[126px] h-[calc(100vh-121px)]"
+    >
+      <div class="mb-1 mt-[7px] text-sm font-medium">On this page</div>
+      <div class="relative">
+        <div
+          class="from-gray-0 z-1 absolute left-0 top-0 h-3 w-full bg-gradient-to-b"
+        />
+        <div
+          class="from-gray-0 absolute bottom-0 left-0 z-10 h-3 w-full bg-gradient-to-t"
+        />
+        <ul
+          class="styled-scrollbar max-h-[70vh] space-y-2.5 overflow-y-auto py-2 text-sm"
+        >
+          <li v-for="link of toc.links">
             <NuxtLink
               :to="`#${link.id}`"
-              class="block text-sm text-gray-500 hover:text-gray-900 transition-colors truncate"
+              class="text-neutral-500 hover:text-neutral-900 block leading-[1.6]"
+              >{{ link.text }}</NuxtLink
             >
-              {{ link.text }}
-            </NuxtLink>
           </li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </div>
+  </nav>
 </template>

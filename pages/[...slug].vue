@@ -5,64 +5,48 @@ const { prev, next } = useContent()
 <template>
   <div>
     <Navbar />
-    <main class="flex mt-16">
-      <Sidebar />
-      <div class="ml-64 flex-grow">
-        <div class="px-6 py-10 mx-auto">
+    <main>
+      <div
+        class="relative mx-auto max-w-screen-xl px-4 py-10 md:flex md:flex-row md:py-10"
+      >
+        <Sidebar />
+        <PageToc />
+        <article
+          class="mt-4 w-full min-w-0 max-w-6xl px-1 md:px-6"
+          style="min-height: calc(-103px + 100vh)"
+        >
           <ContentDoc v-slot="{ doc }" class="flex-1">
-            <article class="max-w-2xl xl:max-w-3xl mx-auto">
-              <h1 class="text-3xl font-bold mb-5">{{ doc.title }}</h1>
-              <ContentRenderer :value="doc" class="markdown" />
-            </article>
-            <div class="grid grid-cols-2 gap-6 max-w-2xl xl:max-w-3xl mx-auto">
-              <NuxtLink
-                v-if="prev"
-                :to="prev._path"
-                class="border border-gray-200 hover:border-gray-900 rounded-xl p-6 transition-colors"
-              >
-                <div class="flex items-center justify-start text-sm">
-                  <Icon
-                    name="lucide:arrow-left"
-                    class="w-4 h-4 text-gray-500 mr-2"
-                  />
-                  <span class="text-gray-900 font-medium leading-none">
-                    {{ prev.title }}
-                  </span>
-                </div>
-              </NuxtLink>
-              <div v-else></div>
-              <NuxtLink
-                v-if="next"
-                :to="next._path"
-                class="border border-gray-200 hover:border-gray-900 rounded-xl p-6 transition-colors"
-              >
-                <div class="flex items-center justify-end text-sm">
-                  <span class="text-gray-900 font-medium leading-none">
-                    {{ next.title }}
-                  </span>
-                  <Icon
-                    name="lucide:arrow-right"
-                    class="w-4 h-4 text-gray-500 ml-2"
-                  />
-                </div>
-              </NuxtLink>
-              <div v-else></div>
-            </div>
-            <Footer class="max-w-2xl xl:max-w-3xl mx-auto" />
+            <h1
+              class="text-4xl font-semibold leading-none break-words mb-8 scroll-mt-12 mt-0"
+            >
+              {{ doc.title }}
+            </h1>
+            <ContentRenderer :value="doc" class="markdown" />
           </ContentDoc>
-        </div>
+        </article>
       </div>
-      <PageToc />
     </main>
   </div>
 </template>
 
 <style>
 .markdown > p {
-  @apply text-gray-600 mb-4;
+  @apply my-5;
 }
 
 .markdown > .tip code {
   @apply bg-blue-50 text-xs text-blue-600 rounded px-1.5 py-1;
+}
+
+.markdown a > span > code {
+  @apply text-blue-600 hover:text-blue-400 transition-colors;
+}
+
+.markdown table code {
+  @apply text-xs leading-tight;
+}
+
+.markdown table tbody tr {
+  @apply border-t border-neutral-200;
 }
 </style>

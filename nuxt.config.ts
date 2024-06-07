@@ -19,19 +19,22 @@ export default defineNuxtConfig({
     documentDriven: true,
     highlight: {
       theme: {
-        default: 'github-light',
-        dark: 'github-dark'
+        default: 'min-light',
+        dark: 'min-dark'
       }
     }
   },
   fonts: {
     families: [
-      { name: 'DM Sans', provider: 'google' },
-      { name: 'DM Mono', provider: 'google' }
+      { name: 'Geist Sans', provider: 'fontsource' },
+      { name: 'Geist Mono', provider: 'fontsource' }
     ],
     defaults: {
       weights: [400, 500, 600, 700],
       styles: ['normal']
     }
+  },
+  tailwindcss: {
+    viewer: false
   }
 })

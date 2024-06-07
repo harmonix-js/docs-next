@@ -1,6 +1,6 @@
 <template>
   <code
-    class="inline-block text-sm text-gray-900 leading-none bg-gray-100 p-1.5 rounded-md"
+    class="inline-block text-sm text-gray-900 leading-tight m-0 bg-neutral-100 border border-neutral-200 rounded-md px-1 py-0.5"
   >
     <slot />
   </code>
@@ -8,6 +8,6 @@
 
 <style>
 code {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Geist Mono', monospace;
 }
 </style>

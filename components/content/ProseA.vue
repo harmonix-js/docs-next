@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   href: {
     type: String,
     default: ''
@@ -24,15 +24,15 @@ defineProps({
   <NuxtLink
     :href="href"
     :target="target"
-    class="inline-flex items-center text-gray-900 underline"
+    class="inline-flex items-start leading-none text-primary-600 hover:text-primary-400 transition-colors"
   >
     <span>
       <slot />
     </span>
     <Icon
-      v-if="target === '_blank'"
-      name="lucide:external-link"
-      class="w-4 h-4 ml-1"
+      v-if="target?.includes('_blank')"
+      name="ph:arrow-up-right"
+      class="w-3 h-3 ml-0.5"
     />
   </NuxtLink>
 </template>

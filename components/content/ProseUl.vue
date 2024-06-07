@@ -1,5 +1,5 @@
 <template>
-  <ul class="pl-5 list-disc marker:text-gray-400">
+  <ul class="list-none pl-3 my-5">
     <slot />
   </ul>
 </template>
