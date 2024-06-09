@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const props = defineProps({
+import { PhArrowUpRight } from '@phosphor-icons/vue'
+
+defineProps({
   href: {
     type: String,
     default: ''
@@ -29,10 +31,10 @@ const props = defineProps({
     <span>
       <slot />
     </span>
-    <Icon
+    <PhArrowUpRight
       v-if="target?.includes('_blank')"
-      name="ph:arrow-up-right"
-      class="w-3 h-3 ml-0.5"
+      :size="12"
+      class="ml-0.5"
     />
   </NuxtLink>
 </template>

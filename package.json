@@ -12,10 +12,10 @@
     "@nuxt/content": "^2.12.1",
     "@nuxt/fonts": "^0.7.0",
     "@nuxtjs/tailwindcss": "^6.12.0",
+    "@phosphor-icons/vue": "^2.2.1",
     "@vueuse/core": "^10.10.0",
     "@vueuse/nuxt": "^10.10.0",
-    "nuxt": "^3.11.2",
-    "nuxt-icon": "^0.6.10"
+    "nuxt": "^3.11.2"
   },
   "devDependencies": {
     "prettier": "^3.3.0",

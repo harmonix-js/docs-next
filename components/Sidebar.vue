@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const { data } = await useAsyncData('navigation', () =>
-  fetchContentNavigation()
-)
+const { navigation } = useContent()
 </script>
 
 <template>
@@ -14,8 +12,12 @@ const { data } = await useAsyncData('navigation', () =>
       >
         <div
           class="from-gray-0 pointer-events-none absolute left-0 top-0 z-10 h-3 w-full bg-gradient-to-b"
-        ></div>
-        <ul v-for="nav of data" class="last-of-type:pb-3">
+        />
+        <ul
+          v-for="nav of navigation[0].children"
+          :key="nav._path"
+          class="last-of-type:pb-3"
+        >
           <li class="my-1.5 ml-[3px]">
             <NuxtLink
               :to="nav._path"
@@ -28,7 +30,11 @@ const { data } = await useAsyncData('navigation', () =>
             >
               <div class="relative">
                 <ul class="px-0.5 last-of-type:mb-0 mb-8">
-                  <li v-for="child of nav.children" class="my-1.5">
+                  <li
+                    v-for="child of nav.children"
+                    :key="child._path"
+                    class="my-1.5"
+                  >
                     <NuxtLink
                       v-if="child._path !== nav._path"
                       :to="child._path"
@@ -47,7 +53,7 @@ const { data } = await useAsyncData('navigation', () =>
         </ul>
         <div
           class="from-gray-0 pointer-events-none absolute bottom-0 left-0 z-10 h-3 w-full bg-gradient-to-t"
-        ></div>
+        />
       </nav>
     </div>
   </div>

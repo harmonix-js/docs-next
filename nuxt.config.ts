@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
-    'nuxt-icon',
     '@vueuse/nuxt'
   ],
   content: {
