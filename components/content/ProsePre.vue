@@ -1,19 +1,5 @@
 <script setup lang="ts">
-import {
-  PhCopy,
-  PhCheck,
-  PhTerminal,
-  PhBracketsCurly,
-  PhFaders
-} from '@phosphor-icons/vue'
-
-const icons = new Map([
-  ['copy', PhCopy],
-  ['check', PhCheck],
-  ['terminal', PhTerminal],
-  ['brackets-curly', PhBracketsCurly],
-  ['faders', PhFaders]
-])
+import { PhCopy, PhCheck } from '@phosphor-icons/vue'
 
 const props = defineProps({
   code: {
