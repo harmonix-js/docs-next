@@ -50,6 +50,12 @@ const getIcon = (input: string) => {
   return match ? match[1] : null
 }
 
+const isNumbered = (input: string) => {
+  const match = input.match(/numbered/)
+
+  return !!match
+}
+
 const icon = computed(() => getIcon(props.meta))
 </script>
 
@@ -79,6 +85,7 @@ const icon = computed(() => getIcon(props.meta))
       </div>
     </div>
     <pre
+      :class="isNumbered(meta) ? 'numbered' : ''"
       class="flex py-5 m-0 rounded-b-md overflow-x-auto [counter-reset:line]"
     >
       <code :class="$props.class" class="grid w-full text-left whitespace-pre [word-spacing:normal] break-normal text-[13px] leading-5">
@@ -97,5 +104,10 @@ pre code .line {
   display: block;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+pre.numbered code .line::before {
+  counter-increment: line;
+  @apply content-[attr(line)] inline-block w-4 text-[13px] text-neutral-400 select-none text-right mr-5;
 }
 </style>
