@@ -30,19 +30,26 @@ const props = defineProps({
 
 const { copy, copied } = useClipboard({ source: ref(props.code) })
 
-const getIcon = (input: string) => {
-  const match = input.match(/icon=(.+)/)
+const getIcon = (meta: string[]) => {
+  for (const item of meta) {
+    const match = item.match(/^(icon=)(.+)/)
 
-  return match ? match[1] : null
+    if (match) return match[2]
+  }
+  return null
 }
 
-const isNumbered = (input: string) => {
-  const match = input.match(/numbered/)
+const isNumbered = (meta: string[]) => {
+  for (const item of meta) {
+    const numbered = /^numbered$/.test(item)
 
-  return !!match
+    if (numbered) return true
+  }
+  return false
 }
 
-const icon = computed(() => getIcon(props.meta))
+const icon = computed(() => getIcon(props.meta?.split(',')))
+const numbered = computed(() => isNumbered(props.meta?.split(',')))
 </script>
 
 <template>
@@ -71,7 +78,7 @@ const icon = computed(() => getIcon(props.meta))
       </div>
     </div>
     <pre
-      :class="isNumbered(meta) ? 'numbered' : ''"
+      :class="numbered ? 'numbered' : ''"
       class="flex py-5 m-0 rounded-b-md overflow-x-auto [counter-reset:line]"
     >
       <code :class="$props.class" class="grid w-full text-left whitespace-pre [word-spacing:normal] break-normal text-[13px] leading-5">
