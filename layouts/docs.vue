@@ -12,7 +12,7 @@
 }
 
 .markdown > .tip code {
-  @apply bg-blue-50 text-xs text-blue-600 rounded px-1.5 py-1;
+  @apply text-xs leading-tight;
 }
 
 .markdown a > span > code {

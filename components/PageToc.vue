@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { PhArrowUpRight } from '@phosphor-icons/vue'
+import { Icon } from '@iconify/vue'
 
 const { toc, page } = useContent()
+console.log(toc.value.links)
 </script>
 
 <template>
@@ -26,14 +27,24 @@ const { toc, page } = useContent()
         <ul
           class="styled-scrollbar max-h-[70vh] space-y-2.5 overflow-y-auto py-2 text-sm"
         >
-          <li v-for="link of toc.links">
-            <NuxtLink
-              :to="`#${link.id}`"
-              class="text-neutral-500 hover:text-neutral-900 block leading-[1.6] transition-colors"
-            >
-              {{ link.text }}
-            </NuxtLink>
-          </li>
+          <template v-for="link of toc.links">
+            <li>
+              <NuxtLink
+                :to="`#${link.id}`"
+                class="text-neutral-500 hover:text-neutral-900 block leading-[1.6] transition-colors"
+              >
+                {{ link.text }}
+              </NuxtLink>
+            </li>
+            <li v-for="child of link.children">
+              <NuxtLink
+                :to="`#${child.id}`"
+                class="pl-3 text-neutral-500 hover:text-neutral-900 block leading-[1.6] transition-colors"
+              >
+                {{ child.text }}
+              </NuxtLink>
+            </li>
+          </template>
         </ul>
       </div>
       <div
@@ -58,7 +69,12 @@ const { toc, page } = useContent()
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
               Edit this page
-              <PhArrowUpRight :size="12" class="ml-0.5" />
+              <Icon
+                icon="ph:arrow-up-right"
+                width="12"
+                height="12"
+                class="ml-0.5"
+              />
             </NuxtLink>
           </li>
           <li>
@@ -68,7 +84,12 @@ const { toc, page } = useContent()
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
               Star on GitHub
-              <PhArrowUpRight :size="12" class="ml-0.5" />
+              <Icon
+                icon="ph:arrow-up-right"
+                width="12"
+                height="12"
+                class="ml-0.5"
+              />
             </NuxtLink>
           </li>
           <li>
@@ -78,7 +99,12 @@ const { toc, page } = useContent()
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
               Chat on Discord
-              <PhArrowUpRight :size="12" class="ml-0.5" />
+              <Icon
+                icon="ph:arrow-up-right"
+                width="12"
+                height="12"
+                class="ml-0.5"
+              />
             </NuxtLink>
           </li>
           <li>
@@ -88,7 +114,12 @@ const { toc, page } = useContent()
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
               Become a Sponsor
-              <PhArrowUpRight :size="12" class="ml-0.5" />
+              <Icon
+                icon="ph:arrow-up-right"
+                width="12"
+                height="12"
+                class="ml-0.5"
+              />
             </NuxtLink>
           </li>
         </ul>

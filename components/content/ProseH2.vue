@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhHash } from '@phosphor-icons/vue'
+import { Icon } from '@iconify/vue'
 
 defineProps<{ id?: string }>()
 </script>
@@ -13,11 +13,11 @@ defineProps<{ id?: string }>()
       <div
         class="group-hover/h2:opacity-100 absolute flex w-6 h-6 bg-white -left-8 bottom-1.5 opacity-0 transition-opacity items-center justify-center border border-dashed border-gray-200 rounded"
       >
-        <PhHash :size="16" class="text-neutral-500" />
+        <Icon icon="ph-hash" width="16" height="16" class="text-neutral-500" />
       </div>
-      <span class="group-hover/h2:text-primary-400 transition-colors"
-        ><slot
-      /></span>
+      <span class="group-hover/h2:text-primary-400 transition-colors">
+        <slot />
+      </span>
     </NuxtLink>
   </h2>
 </template>

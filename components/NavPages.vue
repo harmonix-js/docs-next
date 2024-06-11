@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhCaretLeft, PhCaretRight } from '@phosphor-icons/vue'
+import { Icon } from '@iconify/vue'
 
 const { prev, next } = useContent()
 </script>
@@ -15,15 +15,18 @@ const { prev, next } = useContent()
     >
       <span
         class="group-hover/prev:text-neutral-900 mb-0.5 text-[13px] text-neutral-500 transition-colors"
-        >Previous</span
       >
+        Previous
+      </span>
       <div class="relative flex">
-        <span class="max-w-xs inline-block truncate break-words">
+        <span class="max-w-xs inline-block font-medium truncate break-words">
           {{ prev.title }}
         </span>
         <span class="absolute top-1/2 -left-6 -translate-y-1/2">
-          <PhCaretLeft
-            :size="18"
+          <Icon
+            icon="ph:caret-left"
+            width="18"
+            height="18"
             class="group-hover/prev:text-neutral-900 text-neutral-500 transition-colors"
           />
         </span>
@@ -39,12 +42,14 @@ const { prev, next } = useContent()
         >Next</span
       >
       <div class="relative flex">
-        <span class="max-w-xs inline-block truncate break-words">
+        <span class="max-w-xs inline-block font-medium truncate break-words">
           {{ next.title }}
         </span>
         <span class="absolute top-1/2 -right-6 -translate-y-1/2">
-          <PhCaretRight
-            :size="18"
+          <Icon
+            icon="ph:caret-right"
+            width="18"
+            height="18"
             class="group-hover/next:text-neutral-900 text-neutral-500 transition-colors"
           />
         </span>

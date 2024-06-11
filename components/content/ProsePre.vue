@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhCopy, PhCheck } from '@phosphor-icons/vue'
+import { Icon } from '@iconify/vue'
 
 const props = defineProps({
   code: {
@@ -59,10 +59,10 @@ const numbered = computed(() => isNumbered(props.meta?.split(',')))
     <div
       class="flex items-center bg-neutral-50 h-12 pl-4 pr-3 rounded-t-md border-b border-b-neutral-200"
     >
-      <div class="flex items-center gap-2 text-sm text-neutral-500 mr-auto">
-        <Icon v-if="icon" :name="icon" />
+      <div class="flex items-center gap-2 text-neutral-500 mr-auto">
+        <Icon v-if="icon" :icon="icon" />
         <span
-          class="inline-block truncate [word-wrap:normal] max-w-full min-w-0"
+          class="inline-block text-sm truncate [word-wrap:normal] max-w-full min-w-0"
         >
           {{ filename }}
         </span>
@@ -72,8 +72,8 @@ const numbered = computed(() => isNumbered(props.meta?.split(',')))
           @click="copy(code)"
           class="relative flex items-center justify-center w-8 h-8 hover:bg-black/5 rounded border-none text-gray-500 cursor-pointer p-0 transition-colors"
         >
-          <PhCheck v-if="copied" :size="16" />
-          <PhCopy v-else :size="16" />
+          <Icon v-if="copied" icon="ph:check" width="16" height="16" />
+          <Icon v-else icon="ph:copy" width="16" height="16" />
         </button>
       </div>
     </div>

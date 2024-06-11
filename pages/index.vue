@@ -1,3 +1,3 @@
 <template>
-  <NuxtLayout> Index </NuxtLayout>
+  <NuxtLayout>Index</NuxtLayout>
 </template>
