@@ -2,7 +2,6 @@
 import { Icon } from '@iconify/vue'
 
 const { toc, page } = useContent()
-console.log(toc.value.links)
 </script>
 
 <template>

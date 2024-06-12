@@ -28,6 +28,6 @@
 }
 
 .markdown table td a {
-  @apply inline;
+  @apply inline-flex items-center;
 }
 </style>
