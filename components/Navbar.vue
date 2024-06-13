@@ -22,6 +22,9 @@
           Blog
         </NuxtLink>
       </div>
+      <div>
+        <SearchInput />
+      </div>
     </nav>
   </header>
 </template>
