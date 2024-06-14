@@ -3,7 +3,7 @@
     class="relative mx-auto max-w-screen-xl px-4 py-10 md:flex md:flex-row md:py-10"
   >
     <Sidebar />
-    <PageToc />
+    <DocsToc />
     <article
       class="mt-4 w-full min-w-0 max-w-6xl px-1 md:px-6"
       style="min-height: calc(-103px + 100vh)"

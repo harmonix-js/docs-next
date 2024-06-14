@@ -2,6 +2,46 @@
 import { Icon } from '@iconify/vue'
 
 const { toc, page } = useContent()
+const router = useRouter()
+
+const activeTocId = ref<string | null>(null)
+const observer = ref<IntersectionObserver | null>(null)
+const observerOptions = reactive({
+  root: null,
+  threshold: 0.5
+})
+
+const onClick = (id: string) => {
+  const el = document.getElementById(id)
+
+  if (el) {
+    router.push({ hash: `#${id}` })
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+  activeTocId.value = id
+}
+
+onMounted(() => {
+  observer.value = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute('id')
+
+      if (entry.isIntersecting) {
+        activeTocId.value = id
+      }
+    })
+  }, observerOptions)
+
+  document
+    .querySelectorAll('.markdown h2[id], .markdown h3[id]')
+    .forEach((section) => {
+      observer.value?.observe(section)
+    })
+})
+
+onUnmounted(() => {
+  observer.value?.disconnect()
+})
 </script>
 
 <template>
@@ -26,19 +66,30 @@ const { toc, page } = useContent()
         <ul
           class="styled-scrollbar max-h-[70vh] space-y-2.5 overflow-y-auto py-2 text-sm"
         >
-          <template v-for="link of toc.links">
+          <template v-for="link of toc.links" @click.stop="onClick(link.id)">
             <li>
               <NuxtLink
                 :to="`#${link.id}`"
-                class="text-neutral-500 hover:text-neutral-900 block leading-[1.6] transition-colors"
+                :class="{
+                  'text-primary-600': link.id === activeTocId,
+                  'text-neutral-500 hover:text-neutral-900':
+                    link.id !== activeTocId
+                }"
+                class="block leading-[1.6] transition-colors"
+                @click="onClick(link.id)"
               >
                 {{ link.text }}
               </NuxtLink>
             </li>
-            <li v-for="child of link.children">
+            <li v-for="child of link.children" @click.stop="onClick(child.id)">
               <NuxtLink
                 :to="`#${child.id}`"
-                class="pl-3 text-neutral-500 hover:text-neutral-900 block leading-[1.6] transition-colors"
+                :class="{
+                  'text-primary-600': child.id === activeTocId,
+                  'text-neutral-500 hover:text-neutral-900':
+                    child.id !== activeTocId
+                }"
+                class="pl-3 block leading-[1.6] transition-colors"
               >
                 {{ child.text }}
               </NuxtLink>
@@ -63,7 +114,7 @@ const { toc, page } = useContent()
         >
           <li>
             <NuxtLink
-              :to="`https://github.com/harmonix-js/docs-next/edit/main/content/${page._file.replace(/docs\//, '')}`"
+              :to="`https://github.com/harmonix-js/docs-next/edit/main/content/docs/${page._file.replace(/docs\//, '')}`"
               target="_blank"
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
