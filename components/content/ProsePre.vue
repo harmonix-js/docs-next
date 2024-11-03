@@ -57,7 +57,7 @@ const numbered = computed(() => isNumbered(props.meta?.split(',')))
     class="relative my-4 border border-neutral-200 rounded-md overflow-hidden"
   >
     <div
-      class="flex items-center bg-neutral-50 h-12 pl-4 pr-3 rounded-t-md border-b border-b-neutral-200"
+      class="flex items-center bg-neutral-50 h-12 pl-4 pr-2 rounded-t-md border-b border-b-neutral-200"
     >
       <div class="flex items-center gap-2 text-neutral-500 mr-auto">
         <Icon v-if="icon" :icon="icon" />

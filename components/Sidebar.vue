@@ -7,6 +7,9 @@ const { navigation } = useContent()
     class="sticky top-[121px] hidden h-[calc(100vh-121px)] w-[284px] md:flex md:shrink-0 md:flex-col md:justify-between"
   >
     <div class="relative overflow-hidden">
+      <div class="pl-2 pr-6 pt-px pb-4">
+        <SearchInput class="w-full" />
+      </div>
       <nav
         class="flex h-[calc(100vh-200px)] flex-col overflow-y-scroll pb-4 pr-2"
       >
@@ -19,12 +22,11 @@ const { navigation } = useContent()
           class="last-of-type:pb-3"
         >
           <li class="my-1.5 ml-[3px]">
-            <NuxtLink
-              :to="nav._path"
-              class="hover:text-gray-1000 relative flex w-full cursor-pointer items-center justify-between rounded-md py-1 pl-2 text-left text-sm text-gray-1000 font-medium"
+            <h4
+              class="relative flex w-full items-center justify-between rounded-md py-1 pl-2 text-left text-sm text-gray-1000 font-semibold"
             >
               {{ nav.title }}
-            </NuxtLink>
+            </h4>
             <div
               class="flex flex-col h-auto opacity-100 overflow-hidden transition-all"
             >
@@ -61,10 +63,6 @@ const { navigation } = useContent()
 
 <style scoped>
 .router-link-exact-active {
-  @apply text-primary-600 rounded-md;
-}
-
-.child-nav.router-link-exact-active {
-  text-shadow: 0 0 0.5px rgb(79 70 229 / var(--tw-text-opacity));
+  @apply text-primary-600 font-medium rounded-md;
 }
 </style>

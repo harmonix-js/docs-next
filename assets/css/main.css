@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Geist Sans';
+  src: url("../fonts/Geist[wght].woff2");
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url("../fonts/GeistMono[wght].woff2");
+  font-weight: 100 900;
+}
+
 :root {
   font-family: 'Geist Sans', sans-serif;
   color: rgb(23 23 23);

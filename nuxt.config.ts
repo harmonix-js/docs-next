@@ -10,7 +10,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
-    '@nuxt/fonts',
     '@vueuse/nuxt'
   ],
   content: {
@@ -26,16 +25,6 @@ export default defineNuxtConfig({
         default: 'min-light',
         dark: 'min-dark'
       }
-    }
-  },
-  fonts: {
-    families: [
-      { name: 'Geist Sans', provider: 'fontsource' },
-      { name: 'Geist Mono', provider: 'fontsource' }
-    ],
-    defaults: {
-      weights: [400, 500, 600, 700],
-      styles: ['normal']
     }
   },
   tailwindcss: {

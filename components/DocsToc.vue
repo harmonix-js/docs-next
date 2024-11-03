@@ -17,8 +17,8 @@ const onClick = (id: string) => {
   if (el) {
     router.push({ hash: `#${id}` })
     el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    activeTocId.value = id
   }
-  activeTocId.value = id
 }
 
 onMounted(() => {
@@ -26,7 +26,7 @@ onMounted(() => {
     entries.forEach((entry) => {
       const id = entry.target.getAttribute('id')
 
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && id) {
         activeTocId.value = id
       }
     })
@@ -71,11 +71,11 @@ onUnmounted(() => {
               <NuxtLink
                 :to="`#${link.id}`"
                 :class="{
-                  'text-primary-600': link.id === activeTocId,
+                  'text-primary-600 font-medium': link.id === activeTocId,
                   'text-neutral-500 hover:text-neutral-900':
                     link.id !== activeTocId
                 }"
-                class="block leading-[1.6] transition-colors"
+                class="block leading-[1.6] transition-all"
                 @click="onClick(link.id)"
               >
                 {{ link.text }}
