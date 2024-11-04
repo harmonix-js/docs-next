@@ -2,7 +2,10 @@
 const { page, navigation } = useContent()
 
 const items = computed(() => {
-  const directory = navigation.value[0].children.find((nav: any) => nav._path === page.value._path.split('/').slice(0, 3).join('/'))
+  const directory = navigation.value[0].children.find(
+    (nav: any) =>
+      nav._path === page.value._path?.split('/').slice(0, 3).join('/')
+  )
 
   return [
     { label: 'Docs', to: '/docs' },

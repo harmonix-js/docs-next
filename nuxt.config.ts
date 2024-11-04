@@ -7,10 +7,14 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
   },
+  routeRules: {
+    '/': { ssr: false }
+  },
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@vueuse/motion/nuxt'
   ],
   content: {
     markdown: {
@@ -29,5 +33,6 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     viewer: false
-  }
+  },
+  compatibilityDate: '2024-11-04'
 })

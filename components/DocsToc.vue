@@ -118,6 +118,7 @@ onUnmounted(() => {
               target="_blank"
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
+              <Icon icon="radix-icons:pencil-1" class="w-4 h-4 mr-2" />
               Edit this page
               <Icon
                 icon="ph:arrow-up-right"
@@ -133,6 +134,7 @@ onUnmounted(() => {
               target="_blank"
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
+              <Icon icon="radix-icons:star" class="w-4 h-4 mr-2" />
               Star on GitHub
               <Icon
                 icon="ph:arrow-up-right"
@@ -148,6 +150,7 @@ onUnmounted(() => {
               to="https://discord.gg/TE8F6BgteQ"
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
+              <Icon icon="radix-icons:chat-bubble" class="w-4 h-4 mr-2" />
               Chat on Discord
               <Icon
                 icon="ph:arrow-up-right"
@@ -163,6 +166,7 @@ onUnmounted(() => {
               target="_blank"
               class="flex items-center text-neutral-500 hover:text-neutral-900 leading-[1.6] transition-colors"
             >
+              <Icon icon="radix-icons:heart" class="w-4 h-4 mr-2" />
               Become a Sponsor
               <Icon
                 icon="ph:arrow-up-right"
