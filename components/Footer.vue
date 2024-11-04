@@ -23,13 +23,15 @@
         <div class="flex flex-col">
           <h4 class="mb-4 text-sm font-medium">About Harmonix</h4>
           <NuxtLink
-            to="/docs"
+            to="https://github.com/harmonix-js/core"
+            target="_blank"
             class="mb-3 text-sm text-gray-500 hover:text-gray-900"
           >
             GitHub
           </NuxtLink>
           <NuxtLink
-            to="/blog"
+            to="https://discord.gg/TE8F6BgteQ"
+            target="_blank"
             class="mb-3 text-sm text-gray-500 hover:text-gray-900"
           >
             Discord
